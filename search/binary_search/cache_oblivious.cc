@@ -11,7 +11,7 @@ inline int binary_search_low_high(int *arr, int target, int n_elements, int low,
     return -1;
 }
 
-int cache_oblivious(int *arr, int target, int n_elements) {
+inline int cache_oblivious(int *arr, int target, int n_elements) {
     if (*arr == target) return 0;
     int start = 1;
     while (arr[start] < target) {

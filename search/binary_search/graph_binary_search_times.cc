@@ -7,6 +7,7 @@
 #include "linear_search.cc"
 #include "binary_search.cc"
 #include "cache_oblivious.cc"
+#include "binary_search_linear.cc"
 
 typedef int(*FunctionPointer)(int *, int, int);
 int ARRAY_SZ[] = {5000, 10000, 50000, 100000, 500000, 1000000, 2000000};
@@ -58,6 +59,6 @@ void graph_binary_search(FunctionPointer *binary_search_methods, char *names[], 
 
 int main(void) {
     FunctionPointer search_methods[] = {binary_search, cache_oblivious};
-    char *names[] = {(char *)"binary", (char*)"cache_oblivioius"};
+    char *names[] = {(char *)"binary", (char*)"binary_search_linear"};
     graph_binary_search(search_methods, names, 2);
 }
