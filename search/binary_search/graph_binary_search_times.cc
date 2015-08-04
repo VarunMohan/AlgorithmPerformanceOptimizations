@@ -3,7 +3,7 @@
 #include <random>
 #include <vector>
 #include <fstream>
-#include "naive_search.cc"
+#include "linear_search.cc"
 
 typedef int(*FunctionPointer)(int *, int, int);
 int ARRAY_SZ[] = {10, 100, 1000, 5000, 10000, 50000, 100000, 1000000};
@@ -64,7 +64,7 @@ void graph_binary_search(FunctionPointer *binary_search_methods, char *names[], 
 }
 
 int main(void) {
-    FunctionPointer search_methods[] = {naive_search, naive_search, naive_search};
-    char *names[] = {(char *)"Naive", (char *)"Naive_2", (char *)"Naive_3"};
+    FunctionPointer search_methods[] = {linear_search, linear_search, linear_search};
+    char *names[] = {(char *)"linear", (char *)"linear_2", (char *)"linear_3"};
     graph_binary_search(search_methods, names, 3);
 }
