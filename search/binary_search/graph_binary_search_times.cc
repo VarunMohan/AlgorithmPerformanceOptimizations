@@ -9,8 +9,8 @@
 #include "cache_oblivious.cc"
 
 typedef int(*FunctionPointer)(int *, int, int);
-int ARRAY_SZ[] = {10, 100, 1000, 5000, 10000, 1000000, 100000000};
-int N_REP = 1;
+int ARRAY_SZ[] = {10, 100, 1000, 5000, 10000, 50000, 100000, 1000000};
+int N_REP = 100;
 int RANGE = 1000000;
 
 long int get_time() {
