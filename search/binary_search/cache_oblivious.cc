@@ -1,4 +1,4 @@
-int binary_search_low_high(int *arr, int target, int n_elements, int low, int high) {
+inline int binary_search_low_high(int *arr, int target, int n_elements, int low, int high) {
     while (low <= high) {
 	int mid = (low + high) / 2;
 	if (arr[mid] == target) return mid;
