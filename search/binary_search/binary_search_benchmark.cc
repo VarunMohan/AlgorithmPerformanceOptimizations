@@ -2,10 +2,11 @@
 #include <algorithm>
 #include <set>
 #include <stdlib.h>
-#include "naive_search.cc"
+#include "linear_search.cc"
+#include <time.h>
 #include <assert.h>
 
-const int target = 1E3;
+const int num_terms = 1E5;
 
 int get_rand() {
 	int x = rand() & 0xff;
@@ -18,11 +19,11 @@ int main() {
 	srand (time(NULL));
 	std::set<int> s;
 	
-	while (s.size() < target) {
+	while (s.size() < num_terms) {
 		s.insert(get_rand());
 	}
 	
-	int* arr = new int[target];
+	int* arr = new int[num_terms];
 	int* temp = arr;
 
 	for (std::set<int>::iterator it = s.begin(); it != s.end(); ++it) {
@@ -30,14 +31,16 @@ int main() {
 		temp++;
 	}
 	
-	for (int i = 0; i < target; i++) {
-		assert(search(arr, *(arr+i), target) == i);		
+	int start = time(NULL);
+
+	for (int i = 0; i < num_terms; i++) {
+		assert(search(arr, *(arr+i), num_terms) == i);		
 	}
+
+	std::cout << "TIME PER ACCESS: " << 1.0 * (time(NULL) - start)/num_terms * 1E6 << "mus" << std::endl;
 
 	delete[] arr;
 	
-	std::cout << "SUCCESS" << std::endl;
-
 	return 0;
 }
 
