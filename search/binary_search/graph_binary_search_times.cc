@@ -8,7 +8,7 @@
 #include "binary_search.cc"
 
 typedef int(*FunctionPointer)(int *, int, int);
-int ARRAY_SZ[] = {10, 100, 1000, 5000, 10000};
+int ARRAY_SZ[] = {10, 100, 1000, 5000, 10000, 50000};
 int N_REP = 100;
 int RANGE = 1000000;
 
@@ -57,6 +57,6 @@ void graph_binary_search(FunctionPointer *binary_search_methods, char *names[], 
 
 int main(void) {
     FunctionPointer search_methods[] = {linear_search, binary_search};
-    char *names[] = {(char *)"linear", (char *)"binary"};
-    graph_binary_search(search_methods, names, 2);
+    char *names[] = {(char *)"binary"};
+    graph_binary_search(search_methods, names, 1);
 }
