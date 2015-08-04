@@ -2,9 +2,11 @@ inline int binary_search_low_high(int *arr, int target, int n_elements, int low,
     while (low <= high) {
 	int mid = (low + high) / 2;
 	if (arr[mid] == target) return mid;
-	bool x = arr[mid] < target;
-	low = mid + x;
-	high = mid + x-1;
+	if (arr[mid] < target) {
+		low = mid + 1;
+	} else {
+		high = mid - 1;
+	}
     }
     return -1;
 }
