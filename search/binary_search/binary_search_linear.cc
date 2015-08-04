@@ -3,8 +3,10 @@
 int binary_search_linear(int *arr, int target, int n_elements) {
     int low=0, high=n_elements-1;
     while (low <= high) {
-    if (high - low <= 16) {
-		return low + linear_search(arr + low, target, high-low + 1);
+    if ((high - low <= 16)) { 
+    	int v = linear_search(arr + low, target, high - low + 1);
+    	if (v == -1) return -1;
+    	return low + v;
 	}
 	int mid = (low + high) / 2;
 	if (arr[mid] == target) return mid;
