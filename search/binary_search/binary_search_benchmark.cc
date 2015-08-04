@@ -5,7 +5,7 @@
 #include "naive_search.cc"
 #include <assert.h>
 
-const int target = 1E6;
+const int target = 1E3;
 
 int get_rand() {
 	int x = rand() & 0xff;
@@ -26,7 +26,6 @@ int main() {
 	int* temp = arr;
 
 	for (std::set<int>::iterator it = s.begin(); it != s.end(); ++it) {
-		std::cout << *it << std::endl;
 		*temp = *it;
 		temp++;
 	}
