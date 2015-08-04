@@ -3,6 +3,7 @@
 #include <random>
 #include <vector>
 #include <fstream>
+#include <assert.h>
 #include "linear_search.cc"
 
 typedef int(*FunctionPointer)(int *, int, int);
@@ -16,10 +17,9 @@ long int get_time() {
     return (long int)(tp.tv_sec * 1000 + tp.tv_usec / 1000);
 }
 
-int fill_array_with_elements(int *arr, int sz) {
+void fill_array_with_elements(int *arr, int sz) {
     for (int i = 0; i < sz; i++)
 	arr[i] = i;
-    return arr[rand() % sz];
 }
 
 void graph_binary_search(FunctionPointer *binary_search_methods, char *names[], int n_methods) {
@@ -29,15 +29,14 @@ void graph_binary_search(FunctionPointer *binary_search_methods, char *names[], 
 	FunctionPointer search = binary_search_methods[j];
 	std::vector<double> x_values, y_values;
 	for (int i = 0; i < n_array_szes; i++) {
-	    long int total_time = 0;
 	    int *arr = new int[ARRAY_SZ[i]];
-	    for (int k = 0; k < N_REP; k++) {
-		int target = fill_array_with_elements(arr, ARRAY_SZ[i]);
+		fill_array_with_elements(arr, ARRAY_SZ[i]);
 		long int start_time = get_time();
-		search(arr, target, ARRAY_SZ[i]);
-		total_time += get_time() - start_time;
+		for (int i = 0; i < ARRAY_SZ[i]; i++) {
+			search(arr, *(arr+i), ARRAY_SZ[i]);
 	    }
-	    double avg_time = (double)total_time / N_REP;
+	    long int total_time = get_time() - start_time;
+	    double avg_time = (double)total_time / ARRAY_SZ[i];
 	    x_values.push_back(ARRAY_SZ[i]);
 	    y_values.push_back(avg_time);
 	    delete arr;
