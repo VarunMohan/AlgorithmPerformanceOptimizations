@@ -45,22 +45,14 @@ void graph_binary_search(FunctionPointer *binary_search_methods, char *names[], 
 	xs.push_back(x_values);
 	ys.push_back(y_values);
     }
-    std::ofstream out("times.dat");
-    out << "# SIZE ";
     for (int i = 0; i < n_methods; i++) {
-	out << names[i] << " ";
-    }
-    out << std::endl;
-    for (int i = 0; i < n_array_szes; i++) {
-	out << xs[0][i] << " ";
-	for (int j = 0; j < ys.size(); j++) {
-	    std::vector<double> current_y = ys[j];
-	    double avg_time = current_y[i];
-	    out << avg_time << " ";
+	std::ofstream out(((std::string)names[i] + ".dat"));
+	std::vector<double> x = xs[i], y = ys[i];
+	for (int i = 0; i < x.size(); i++) {
+	    out << x[i] << " " << y[i] << std::endl;
 	}
-	out << std::endl;
+	out.close();
     }
-    out.close();
 }
 
 int main(void) {
