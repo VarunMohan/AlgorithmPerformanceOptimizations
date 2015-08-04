@@ -1,6 +1,6 @@
 AlgorithmPerformanceOptimizations
 ---------------------------------------------
-Project contains optimizations for various common algorithms that maximize Cache Locality, minimize Branch Mispredication, and take advantage of CPU architecture
+Project contains optimizations for various common algorithms that maximize cache locality, minimize branch mispredication, and take advantage of CPU architecture.
 
 Dependencies
 -------------------------------
