@@ -58,7 +58,7 @@ void graph_binary_search(FunctionPointer *binary_search_methods, char *names[], 
 }
 
 int main(void) {
-    FunctionPointer search_methods[] = {binary_search, cache_oblivious};
+    FunctionPointer search_methods[] = {binary_search, binary_search_linear};
     char *names[] = {(char *)"binary", (char*)"binary_search_linear"};
     graph_binary_search(search_methods, names, 2);
 }
