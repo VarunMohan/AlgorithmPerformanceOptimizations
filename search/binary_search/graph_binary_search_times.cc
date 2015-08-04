@@ -32,8 +32,8 @@ void graph_binary_search(FunctionPointer *binary_search_methods, char *names[], 
 	    int *arr = new int[ARRAY_SZ[i]];
 		fill_array_with_elements(arr, ARRAY_SZ[i]);
 		long int start_time = get_time();
-		for (int i = 0; i < ARRAY_SZ[i]; i++) {
-			search(arr, *(arr+i), ARRAY_SZ[i]);
+		for (int j = 0; j < ARRAY_SZ[i]; j++) {
+			assert(j == search(arr, *(arr+j), ARRAY_SZ[i]));
 	    }
 	    long int total_time = get_time() - start_time;
 	    double avg_time = (double)total_time / ARRAY_SZ[i];
