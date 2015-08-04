@@ -6,10 +6,11 @@
 #include <assert.h>
 #include "linear_search.cc"
 #include "binary_search.cc"
+#include "cache_oblivious.cc"
 
 typedef int(*FunctionPointer)(int *, int, int);
-int ARRAY_SZ[] = {10, 100, 1000, 5000, 10000};
-int N_REP = 100;
+int ARRAY_SZ[] = {10, 100, 1000, 5000, 10000, 1000000, 100000000};
+int N_REP = 1;
 int RANGE = 1000000;
 
 long int get_time() {
@@ -31,10 +32,10 @@ void graph_binary_search(FunctionPointer *binary_search_methods, char *names[], 
 	std::vector<double> x_values, y_values;
 	for (int i = 0; i < n_array_szes; i++) {
 	    int *arr = new int[ARRAY_SZ[i]];
-		fill_array_with_elements(arr, ARRAY_SZ[i]);
-		long int start_time = get_time();
-		for (int k = 0; k < ARRAY_SZ[i]; k++) {
-			assert(k == search(arr, *(arr+k), ARRAY_SZ[i]));
+	    fill_array_with_elements(arr, ARRAY_SZ[i]);
+	    long int start_time = get_time();
+	    for (int k = 0; k < ARRAY_SZ[i]; k++) {
+		assert(k == search(arr, *(arr+k), ARRAY_SZ[i]));
 	    }
 	    long int total_time = get_time() - start_time;
 	    double avg_time = (double)total_time / ARRAY_SZ[i];
@@ -56,7 +57,7 @@ void graph_binary_search(FunctionPointer *binary_search_methods, char *names[], 
 }
 
 int main(void) {
-    FunctionPointer search_methods[] = {linear_search, binary_search};
-    char *names[] = {(char *)"linear", (char *)"binary"};
+    FunctionPointer search_methods[] = {binary_search, cache_oblivious};
+    char *names[] = {(char *)"binary", (char*)"cache_oblivioius"};
     graph_binary_search(search_methods, names, 2);
 }

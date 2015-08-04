@@ -1,0 +1,19 @@
+int binary_search_low_high(int *arr, int target, int n_elements, int low, int high) {
+    while (low <= high) {
+	int mid = (low + high) / 2;
+	if (arr[mid] == target) return mid;
+	if (arr[mid] < target) low = mid+1;
+	else high = mid-1;
+    }
+    return -1;
+}
+
+int cache_oblivious(int *arr, int target, int n_elements) {
+    int start = 0;
+    while (arr[start] < target) {
+	if (start == 0) start += 1;
+	else start *= 2;
+	if (start > n_elements) return binary_search_low_high(arr, target, n_elements, start/2, n_elements-1);
+    }
+    return binary_search_low_high(arr, target, n_elements, start/2, start);
+}
