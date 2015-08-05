@@ -13,7 +13,7 @@
 
 typedef int(*FunctionPointer)(int *, int, int);
 typedef void(*PreprocessPointer)(int *, int);
-int ARRAY_SZ[] = {31, 63, 127, 255, 1023, 2047, 4095, 8195, 16391};
+int ARRAY_SZ[] = {31, 63, 127, 255, 1023, 2047, 4095, 8195, 16391, 1048575, 2097151, 4194303, 8388607, 16777215};
 int N_REP = 200000;
 int RANGE = 1000000;
 
