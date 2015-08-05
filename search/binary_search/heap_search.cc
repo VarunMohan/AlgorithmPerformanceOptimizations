@@ -50,7 +50,7 @@ void heapify(int *arr, int n) {
 
 int heap_search(int *impl, int x, int n) {
     int c=0, start=0, end=n-1;
-    while (true) {
+    while (start <= end) {
 	if (impl[c] == x) return (start+end)/2;
 	else if (impl[c] < x) {
 	    c = c * 2 + 2;
