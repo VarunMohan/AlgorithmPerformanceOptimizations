@@ -39,7 +39,7 @@ BinaryTree* sortedArrayToBST(int arr[], int start, int end) {
 }
 
 BinaryTree* sortedArrayToBST(int arr[], int n) {
-  return sortedArrayToBST(arr, 0, n);
+    return sortedArrayToBST(arr, 0, n-1);
 }
 
 void heapify(int *arr, int n) {
@@ -49,7 +49,7 @@ void heapify(int *arr, int n) {
 }
 
 int heap_search(int *impl, int x, int n) {
-    int c=0, start=0, end=n;
+    int c=0, start=0, end=n-1;
     while (true) {
 	if (impl[c] == x) return (start+end)/2;
 	else if (impl[c] < x) {
