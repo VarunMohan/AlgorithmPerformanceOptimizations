@@ -9,10 +9,12 @@
 #include "cache_oblivious.cc"
 #include "binary_search_linear.cc"
 #include <ctime>
+#include "heap_search.cc"
 
 typedef int(*FunctionPointer)(int *, int, int);
-int ARRAY_SZ[] = {500000, 5000000, 100000000};
-int N_REP = 200;
+typedef void(*PreprocessPointer)(int *, int);
+int ARRAY_SZ[] = {31, 63, 127, 255, 1023, 2047, 4095, 8195, 16391};
+int N_REP = 200000;
 int RANGE = 1000000;
 
 long int get_time() {
@@ -34,17 +36,19 @@ void get_n_random_ints(int *out, int *out2, int *in, int n_vals) {
     }
 }
 
-void graph_binary_search(FunctionPointer *binary_search_methods, char *names[], int n_methods) {
+void graph_binary_search(FunctionPointer *binary_search_methods, PreprocessPointer *preprocesses, char *names[], int n_methods) {
     int n_array_szes = sizeof(ARRAY_SZ) / sizeof(int);
     std::vector<std::vector<double> > xs, ys;
     for (int j = 0; j < n_methods; j++) {
 	FunctionPointer search = binary_search_methods[j];
+	PreprocessPointer preprocess = preprocesses[j];
 	std::vector<double> x_values, y_values;
 	for (int i = 0; i < n_array_szes; i++) {
 	    int *arr = new int[ARRAY_SZ[i]];
 	    int *random_indices = new int[N_REP], *random_indices_value = new int[N_REP];
 	    fill_array_with_elements(arr, ARRAY_SZ[i]);
 	    get_n_random_ints(random_indices, random_indices_value, arr, ARRAY_SZ[i]);
+	    if (preprocess != NULL) preprocess(arr, ARRAY_SZ[i]);
 	    long int start_time = get_time();
 	    for (int k = 0; k < N_REP; k++) {
 		assert(random_indices[k] == search(arr, random_indices_value[k], ARRAY_SZ[i]));
@@ -72,7 +76,8 @@ void graph_binary_search(FunctionPointer *binary_search_methods, char *names[], 
 
 int main(void) {
     srand(time(NULL));
-    FunctionPointer search_methods[] = {binary_search, binary_search_linear, binary_search, linear_search};
-    char *names[] = {(char *)"binary", (char*)"binarysearchlinear", (char *)"bsearch", (char *)"linear"};
-    graph_binary_search(search_methods, names, 5);
+    FunctionPointer search_methods[] = {binary_search, binary_search_linear, heap_search};
+    PreprocessPointer preprocessing_methods[] = {NULL, NULL, heapify};
+    char *names[] = {(char *)"binary", (char*)"binarysearchlinear", (char*)"heapsearch"};
+    graph_binary_search(search_methods, preprocessing_methods, names, 3);
 }

@@ -31,7 +31,7 @@ void convert_array(int* in, BinaryTree *root, int index) {
 BinaryTree* sortedArrayToBST(int arr[], int start, int end) {
   if (start > end) return NULL;
   // same as (start+end)/2, avoids overflow.
-  int mid = (start + (end - start) + 1) / 2;
+  int mid = (start + end) / 2;
   BinaryTree *node = create_binary_tree(arr[mid]);
   node->left = sortedArrayToBST(arr, start, mid-1);
   node->right = sortedArrayToBST(arr, mid+1, end);
@@ -39,7 +39,7 @@ BinaryTree* sortedArrayToBST(int arr[], int start, int end) {
 }
 
 BinaryTree* sortedArrayToBST(int arr[], int n) {
-  return sortedArrayToBST(arr, 0, n-1);
+  return sortedArrayToBST(arr, 0, n);
 }
 
 void heapify(int *arr, int n) {
@@ -48,10 +48,18 @@ void heapify(int *arr, int n) {
     convert_array(arr, root, 0);
 }
 
-int main(void) {
-    int n = 7;
-    int *arr = new int[n];
-    for (int i = 0; i < n; i++) arr[i] = i;
-    heapify(arr, n);
-    for (int i = 0; i < n; i++) cout << arr[i] << " ";
+int heap_search(int *impl, int x, int n) {
+    int c=0, start=0, end=n;
+    while (true) {
+	if (impl[c] == x) return (start+end)/2;
+	else if (impl[c] < x) {
+	    c = c * 2 + 2;
+	    start = (start+end)/2 + 1;
+	}
+	else {
+	    c = c * 2 + 1;
+	    end = (start+end)/2 - 1;
+	}
+    }
+    return -1;
 }
