@@ -63,3 +63,20 @@ int heap_search(int *impl, int x, int n) {
     }
     return -1;
 }
+
+inline int heap_search_2(int * __restrict__ impl, int x, int n) {
+    int c=0, start=0, end=n-1;
+    while (start <= end) {
+	int k = impl[c];
+	if (k == x) return (start+end)/2;
+	c = (c << 1) + 1;
+	if (k < x) {
+	    c++;
+	    start = ((start+end)>>1) + 1;
+	}
+	else {
+	    end = ((start+end)>>1) - 1;
+	}
+    }
+    return -1;
+}

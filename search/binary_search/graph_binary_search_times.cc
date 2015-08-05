@@ -76,8 +76,8 @@ void graph_binary_search(FunctionPointer *binary_search_methods, PreprocessPoint
 
 int main(void) {
     srand(time(NULL));
-    FunctionPointer search_methods[] = {binary_search, binary_search_linear, heap_search};
-    PreprocessPointer preprocessing_methods[] = {NULL, NULL, heapify};
-    char *names[] = {(char *)"binary", (char*)"binarysearchlinear", (char*)"heapsearch"};
-    graph_binary_search(search_methods, preprocessing_methods, names, 3);
+    FunctionPointer search_methods[] = {binary_search, binary_search_linear, heap_search_2, heap_search};
+    PreprocessPointer preprocessing_methods[] = {NULL, NULL, heapify, heapify};
+    char *names[] = {(char *)"binary", (char*)"binarysearchlinear", (char*)"heapsearch2", (char *)"heapsearch"};
+    graph_binary_search(search_methods, preprocessing_methods, names, 4);
 }
