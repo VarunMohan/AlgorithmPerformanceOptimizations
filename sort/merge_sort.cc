@@ -28,7 +28,8 @@ inline void merge_sort_helper(int *B, int *A, int n) {
   }
 
 inline void merge_sort(int *A, int n) {
-	int *B = new int[n]; merge_sort_helper(B, A, n);
+	int *B = new int[n]; 
+	merge_sort_helper(B, A, n);
 	for (int i = 0; i < n; ++i) {
 		A[i] = B[i];
 	}
