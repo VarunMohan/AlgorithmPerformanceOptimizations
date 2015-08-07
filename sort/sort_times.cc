@@ -4,6 +4,8 @@
 #include <random>
 #include <sys/time.h>
 
+#include "merge_sort.cc"
+
 using namespace std;
 
 int sizes[] = {100, 1000, 10000, 100000, 1000000};
@@ -55,5 +57,5 @@ void benchmark(void (sort)(int *, int), char *name, bool check_sorted) {
 
 int main(void) {
     srand(time(NULL));
-    benchmark(std_sort, (char *)"std_sort", true);
+    benchmark(merge_sort, (char *)"merge_sort", true);
 }
