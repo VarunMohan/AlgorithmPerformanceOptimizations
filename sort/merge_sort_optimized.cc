@@ -66,7 +66,8 @@ inline void merge_sort_helper_optimized3(int *aux, int *sorted, int *start, int 
 	return;
     }
     if (n <= 8) {
-	sort_le_8(aux, start, n);
+	sort8_network(aux);
+	return;
     }
 
     int *mid = start + n/2;
@@ -98,8 +99,17 @@ inline void merge_sort_optimized(int *A, int n) {
 }
 
 inline void merge_sort_optimized3(int *A, int n) {
-        int *B = new int[n];
-	merge_sort_helper_optimized3(A, B, A, A+n);
+    int *B = new int[n + 8];
+    int *C = new int[n + 8];
+    for (int i = n; i < n + 8; ++i) {
+		B[i] = INT_MAX;
+		C[i] = INT_MAX;
+	}
+
+	for (int i = 0; i < n; ++i) {
+		C[i] = A[i];
+	}
+	merge_sort_helper_optimized3(C, B, C, C+n);
 	for (int i = 0; i < n; ++i) {
 	    A[i] = B[i];
 	}
