@@ -1,3 +1,3 @@
 run:
-	g++ sort_times.cc 
+	g++ -O3 sort_times.cc
 	./a.out
