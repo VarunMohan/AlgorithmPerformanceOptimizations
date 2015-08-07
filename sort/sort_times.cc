@@ -39,7 +39,10 @@ void benchmark(void (sort)(int *, int), char *name, bool check_sorted) {
     cout << "Sort Method: " << name << endl;
     for (int j = 0; j < sizeof(sizes)/sizeof(int); j++) {
 	long int total_time = 0;
-	int *arr = new int[sizes[j]];
+	int *arr = new int[sizes[j] + 8];
+	for (int i = sizes[j]; i < sizes[j] + 8; ++i) {
+		arr[i] = INT_MAX;
+	}
 	for (int i = 0; i < n_rep; i++) {
 	    generate_random_array(arr, sizes[j]);
 	    long int t1 = get_time();
@@ -62,5 +65,6 @@ int main(void) {
     benchmark(merge_sort_optimized2, (char *)"merge_sort_optimized2", true);
     benchmark(merge_sort_optimized, (char *)"merge_sort_optimized", true);
     benchmark(merge_sort_optimized3, (char *)"merge_sort_optimized3", true);
+    benchmark(merge_sort_optimized_pre_padded, (char *)"merge_sort_optimized_pre_padded", true);
     benchmark(std_sort, (char*)"std_sort", true);
 }
