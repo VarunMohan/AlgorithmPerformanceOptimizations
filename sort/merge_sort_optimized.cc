@@ -99,9 +99,10 @@ inline void merge_sort_optimized(int *A, int n) {
 }
 
 inline void merge_sort_optimized3(int *A, int n) {
-    int *B = new int[n + 8];
-    int *C = new int[n + 8];
-    for (int i = n; i < n + 8; ++i) {
+	int *B = new int[n+8];
+	int *C = new int[n+8];
+
+	for (int i = n; i < n + 8; ++i) {
 		B[i] = INT_MAX;
 		C[i] = INT_MAX;
 	}
@@ -109,10 +110,21 @@ inline void merge_sort_optimized3(int *A, int n) {
 	for (int i = 0; i < n; ++i) {
 		C[i] = A[i];
 	}
+
 	merge_sort_helper_optimized3(C, B, C, C+n);
+	for (int i = 0; i < n; ++i) {
+		A[i] = B[i];
+	}
+}
+
+inline void merge_sort_optimized_pre_padded(int *A, int n) {
+    int *B = new int[n + 8];
+    for (int i = n; i < n + 8; ++i) {
+		B[i] = INT_MAX;
+	}
+
+	merge_sort_helper_optimized3(A, B, A, A+n);
 	for (int i = 0; i < n; ++i) {
 	    A[i] = B[i];
 	}
-
-	delete B;
 }
