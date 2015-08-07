@@ -78,7 +78,7 @@ inline void merge_sort_helper_optimized3(int *aux, int *sorted, int *start, int 
 
 inline void merge_sort_optimized2(int *A, int n) {
 	int *B = new int[n];
-	int *aux = new int[2*n+10];
+	int *aux = new int[2*n+8];
 	merge_sort_helper_optimized2(aux, B, A, n);
 	for (int i = 0; i < n; ++i) {
 		A[i] = B[i];

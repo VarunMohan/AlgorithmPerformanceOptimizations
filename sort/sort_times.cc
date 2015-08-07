@@ -10,7 +10,7 @@
 
 using namespace std;
 
-int sizes[] = {100, 1000};
+int sizes[] = {100, 1000, 10000, 100000, 1000000};
 int n_rep = 20;
 
 long int get_time() {
@@ -34,6 +34,14 @@ void generate_random_array(int *out, int n) {
 
 void std_sort(int *arr, int n) {
     sort(arr, arr + n);
+}
+
+int cmp (const void *a, const void *b) {
+	return ( *(int*)a - *(int*)b);
+}
+
+void std_qsort(int *arr, int n) {
+	qsort(arr, n, sizeof(int), cmp);
 }
 
 void benchmark(void (sort)(int *, int), char *name, bool check_sorted) {
@@ -68,4 +76,5 @@ int main(void) {
     benchmark(merge_sort_optimized3, (char *)"merge_sort_optimized3", true);
     benchmark(merge_sort_optimized_pre_padded, (char *)"merge_sort_optimized_pre_padded", true);
     benchmark(std_sort, (char*)"std_sort", true);
+    benchmark(std_qsort, (char*)"std_qsort", true);
 }
