@@ -26,7 +26,7 @@ inline void merge_sort_helper_optimized2(int *aux, int *B, int *A, int n) {
     merge(B, aux, aux + n/2, n/2, n-n/2);
 }
 
-inline void merge_sort_helper_optimized3(int *aux, int *sorted, int *start, int *end) {
+inline void merge_sort_helper_optimized(int *aux, int *sorted, int *start, int *end) {
     int n = (end-start);
     if (n == 1) {
 	sorted[0] = *start;
@@ -34,24 +34,11 @@ inline void merge_sort_helper_optimized3(int *aux, int *sorted, int *start, int 
     }
 
     int *mid = start + n/2;
-    merge_sort_helper_optimized3(aux, aux, start, mid);
-    merge_sort_helper_optimized3(aux + n/2, aux + n/2, mid, end);
+    merge_sort_helper_optimized(aux, aux, start, mid);
+    merge_sort_helper_optimized(aux + n/2, aux + n/2, mid, end);
     merge(sorted, aux, aux + n/2, mid - start, end - mid);
   }
 
-
-inline void merge_sort_helper_optimized(int *sorted, int *start, int *end) {
-    int n = (end-start);
-    if (n == 1) {
-	sorted[0] = *start;
-      return;
-    }
-
-    int *mid = start + n/2;
-    merge_sort_helper_optimized(sorted, start, mid);
-    merge_sort_helper_optimized(sorted + n/2, mid, end);
-    merge(sorted, start, mid, mid - start, end - mid);
-}
 
 inline void merge_sort_optimized2(int *A, int n) {
 	int *B = new int[n];
@@ -65,14 +52,12 @@ inline void merge_sort_optimized2(int *A, int n) {
 	delete aux;
 }
 
-inline void merge_sort_optimized3(int *A, int n) {
+inline void merge_sort_optimized(int *A, int n) {
 	int *B = new int[n];
-	int *aux = new int[n];
-	merge_sort_helper_optimized3(aux, B, A, A+n);
+	merge_sort_helper_optimized(A, B, A, A+n);
 	for (int i = 0; i < n; ++i) {
 		A[i] = B[i];
 	}
 
 	delete B;
-	delete aux;
 }

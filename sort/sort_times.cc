@@ -60,6 +60,6 @@ int main(void) {
     srand(time(NULL));
     benchmark(merge_sort, (char *)"merge_sort", true);
     benchmark(merge_sort_optimized2, (char *)"merge_sort_optimized2", true);
-    benchmark(merge_sort_optimized3, (char *)"merge_sort_optimized3", true);
+    benchmark(merge_sort_optimized, (char *)"merge_sort_optimized", true);
     benchmark(std_sort, (char*)"std_sort", true);
 }
