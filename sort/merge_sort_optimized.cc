@@ -25,6 +25,8 @@ inline void merge_sort_helper_optimized(int *B, int *A, int n) {
     merge_sort_helper_optimized(C, A, n/2);
     merge_sort_helper_optimized(C + n/2, A + n/2, n - n/2);
     merge_optimized(B, C, C + n/2, n/2, n - n/2);
+
+    delete C;
   }
 
 inline void merge_sort_optimized(int *A, int n) {

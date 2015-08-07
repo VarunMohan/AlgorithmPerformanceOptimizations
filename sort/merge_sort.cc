@@ -23,6 +23,8 @@ inline void merge_sort_helper(int *B, int *A, int n) {
     merge_sort_helper(C, A, n/2);
     merge_sort_helper(C + n/2, A + n/2, n - n/2);
     merge(B, C, C + n/2, n/2, n - n/2);
+
+    delete C;
   }
 
 inline void merge_sort(int *A, int n) {
