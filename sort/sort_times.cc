@@ -3,13 +3,14 @@
 #include <ctime>
 #include <random>
 #include <sys/time.h>
+#include "limits.h"
 
 #include "merge_sort.cc"
 #include "merge_sort_optimized.cc"
 
 using namespace std;
 
-int sizes[] = {100, 1000, 10000, 100000, 1000000};
+int sizes[] = {100, 1000, 10000, 100000, 1000000, 10000000};
 int n_rep = 20;
 
 long int get_time() {
