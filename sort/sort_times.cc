@@ -9,7 +9,7 @@
 
 using namespace std;
 
-int sizes[] = {100, 1000, 10000, 100000, 1000000};
+int sizes[] = {100, 1000, 10000, 100000};
 int n_rep = 20;
 
 long int get_time() {
@@ -61,5 +61,6 @@ int main(void) {
     benchmark(merge_sort, (char *)"merge_sort", true);
     benchmark(merge_sort_optimized2, (char *)"merge_sort_optimized2", true);
     benchmark(merge_sort_optimized, (char *)"merge_sort_optimized", true);
+    benchmark(merge_sort_optimized3, (char *)"merge_sort_optimized3", true);
     benchmark(std_sort, (char*)"std_sort", true);
 }
