@@ -5,6 +5,7 @@
 #include <sys/time.h>
 
 #include "merge_sort.cc"
+#include "merge_sort_optimized.cc"
 
 using namespace std;
 
@@ -59,4 +60,5 @@ int main(void) {
     srand(time(NULL));
     benchmark(merge_sort, (char *)"merge_sort", true);
     benchmark(std_sort, (char*)"std_sort", true);
+    benchmark(merge_sort_optimized, (char *)"merge_sort_optimized", true);
 }
