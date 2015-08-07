@@ -16,6 +16,16 @@ inline void merge_optimized(int *C, int *A, int *B, int na, int nb) {
 	}
 }
 
+inline void merge_sort_helper_optimized2(int *aux, int *B, int *A, int n) {
+    if (n == 1) {
+	B[0] = A[0];
+	return;
+    }
+    merge_sort_helper_optimized2(aux + n, aux, A, n/2);
+    merge_sort_helper_optimized2(aux + n, aux + n/2, A + n/2, n - n/2);
+    merge(B, aux, aux + n/2, n/2, n-n/2);
+}
+
 inline void merge_sort_helper_optimized(int *sorted, int *start, int *end) {
     int n = start - end;
     if (n <= 1) {
@@ -23,15 +33,16 @@ inline void merge_sort_helper_optimized(int *sorted, int *start, int *end) {
       return;
     }
 
-	int *mid = start + n/2;
+    int *mid = start + n/2;
     merge_sort_helper_optimized(sorted, start, mid);
     merge_sort_helper_optimized(sorted, mid, end);
-    merge_optimized(sorted, start, mid, mid - start, end - mid);
+    merge(sorted, start, mid, mid - start, end - mid);
   }
 
 inline void merge_sort_optimized(int *A, int n) {
 	int *B = new int[n];
-	merge_sort_helper_optimized(B, A, A+n);
+	int *aux = new int[2 * int(n*log2(n))];
+	merge_sort_helper_optimized2(aux, B, A, n);
 	for (int i = 0; i < n; ++i) {
 		A[i] = B[i];
 	}
