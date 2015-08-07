@@ -9,7 +9,7 @@
 using namespace std;
 
 int sizes[] = {100, 1000, 10000, 100000, 1000000};
-int n_rep = 100;
+int n_rep = 50;
 
 long int get_time() {
     struct timeval tp;
@@ -58,4 +58,5 @@ void benchmark(void (sort)(int *, int), char *name, bool check_sorted) {
 int main(void) {
     srand(time(NULL));
     benchmark(merge_sort, (char *)"merge_sort", true);
+    benchmark(std_sort, (char*)"std_sort", true);
 }
