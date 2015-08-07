@@ -41,9 +41,12 @@ inline void merge_sort_helper_optimized(int *sorted, int *start, int *end) {
 
 inline void merge_sort_optimized(int *A, int n) {
 	int *B = new int[n];
-	int *aux = new int[2 * int(n*log2(n))];
+	int *aux = new int[2 * n + 1];
 	merge_sort_helper_optimized2(aux, B, A, n);
 	for (int i = 0; i < n; ++i) {
 		A[i] = B[i];
 	}
+
+	delete B;
+	delete aux;
 }

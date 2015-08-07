@@ -9,8 +9,8 @@
 
 using namespace std;
 
-int sizes[] = {100, 1000, 10000, 100000};
-int n_rep = 10;
+int sizes[] = {100, 1000, 10000, 100000, 1000000};
+int n_rep = 20;
 
 long int get_time() {
     struct timeval tp;

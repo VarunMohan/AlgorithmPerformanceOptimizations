@@ -33,4 +33,6 @@ inline void merge_sort(int *A, int n) {
 	for (int i = 0; i < n; ++i) {
 		A[i] = B[i];
 	}
+	
+	delete B;
 }
