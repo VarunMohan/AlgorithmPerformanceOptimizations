@@ -84,8 +84,8 @@ inline void merge_sort_optimized2(int *A, int n) {
 		A[i] = B[i];
 	}
 
-	delete B;
-	delete aux;
+	delete [] B;
+	delete [] aux;
 }
 
 inline void merge_sort_optimized(int *A, int n) {
@@ -95,7 +95,7 @@ inline void merge_sort_optimized(int *A, int n) {
 	    A[i] = B[i];
 	}
 
-	delete B;
+	delete [] B;
 }
 
 inline void merge_sort_optimized3(int *A, int n) {
@@ -116,8 +116,8 @@ inline void merge_sort_optimized3(int *A, int n) {
 		A[i] = B[i];
 	}
 
-	delete B;
-	delete C;
+	delete [] B;
+	delete [] C;
 }
 
 inline void merge_sort_optimized_pre_padded(int *A, int n) {
@@ -130,5 +130,5 @@ inline void merge_sort_optimized_pre_padded(int *A, int n) {
 	A[i] = B[i];
     }
 
-    delete B;
+    delete [] B;
 }

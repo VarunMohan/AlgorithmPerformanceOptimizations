@@ -24,15 +24,15 @@ inline void merge_sort_helper(int *B, int *A, int n) {
     merge_sort_helper(C + n/2, A + n/2, n - n/2);
     merge(B, C, C + n/2, n/2, n - n/2);
 
-    delete C;
+    delete [] C;
   }
 
 inline void merge_sort(int *A, int n) {
-	int *B = new int[n]; 
+	int *B = new int[n];
 	merge_sort_helper(B, A, n);
 	for (int i = 0; i < n; ++i) {
-		A[i] = B[i];
+	    A[i] = B[i];
 	}
-	
-	delete B;
+
+	delete [] B;
 }

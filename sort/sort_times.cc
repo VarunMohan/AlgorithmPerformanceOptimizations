@@ -10,7 +10,7 @@
 
 using namespace std;
 
-int sizes[] = {100, 1000, 10000, 100000, 1000000, 10000000};
+int sizes[] = {100, 1000};
 int n_rep = 20;
 
 long int get_time() {
@@ -54,7 +54,7 @@ void benchmark(void (sort)(int *, int), char *name, bool check_sorted) {
 	    }
 	    total_time += t1;
 	}
-	delete arr;
+	delete [] arr;
 	double avg_time = (double)total_time / (double)n_rep;
 	cout << "Size: " << sizes[j] << " with time: " << avg_time << " milliseconds" << endl;
     }
