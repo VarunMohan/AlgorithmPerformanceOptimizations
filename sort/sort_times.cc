@@ -7,6 +7,7 @@
 
 #include "merge_sort.cc"
 #include "merge_sort_optimized.cc"
+#include "quick_sort.cc"
 
 using namespace std;
 
@@ -22,7 +23,7 @@ long int get_time() {
 void check(int *arr, int n) {
     for (int i = 0; i < n-1; i++) {
 	if (arr[i+1] < arr[i]) {
-	    printf("WRONG!");
+	    printf("WRONG!\n");
 	    exit(0);
 	}
     }
@@ -30,6 +31,10 @@ void check(int *arr, int n) {
 
 void generate_random_array(int *out, int n) {
     for (int i = 0; i < n; i++) out[i] = rand();
+}
+
+void std_stable_sort(int *arr, int n) {
+	std::stable_sort(arr, arr+n);
 }
 
 void std_sort(int *arr, int n) {
@@ -70,11 +75,13 @@ void benchmark(void (sort)(int *, int), char *name, bool check_sorted) {
 
 int main(void) {
     srand(time(NULL));
-    benchmark(merge_sort, (char *)"merge_sort", true);
-    benchmark(merge_sort_optimized2, (char *)"merge_sort_optimized2", true);
-    benchmark(merge_sort_optimized, (char *)"merge_sort_optimized", true);
-    benchmark(merge_sort_optimized3, (char *)"merge_sort_optimized3", true);
-    benchmark(merge_sort_optimized_pre_padded, (char *)"merge_sort_optimized_pre_padded", true);
+    //benchmark(merge_sort, (char *)"merge_sort", true);
+    //benchmark(merge_sort_optimized2, (char *)"merge_sort_optimized2", true);
+    //benchmark(merge_sort_optimized, (char *)"merge_sort_optimized", true);
+   // benchmark(merge_sort_optimized3, (char *)"merge_sort_optimized3", true);
+    //benchmark(merge_sort_optimized_pre_padded, (char *)"merge_sort_optimized_pre_padded", true);
+    benchmark(quick_sort, (char*) "quick_sort", true);
+    benchmark(std_stable_sort, (char *)"std_stable_sort", true);
     benchmark(std_sort, (char*)"std_sort", true);
     benchmark(std_qsort, (char*)"std_qsort", true);
 }
