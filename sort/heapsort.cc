@@ -13,7 +13,7 @@ void bubble_up(int *heap, int cur_index) {
 }
 
 void bubble_down(int *heap, int cur_index) {
-    int c1_val = cur_index*2+1, c2_val = cur_index*2+2, cur_val = heap[cur_index];;
+    int c1_val = cur_index*2+1, c2_val = cur_index*2+2, cur_val = heap[cur_index];
     if (c1_val < cur_val || c2_val < cur_val) {
 	if (c1_val > c2_val) {
 	    heap[cur_index*2+2] = cur_val;
@@ -35,7 +35,7 @@ void insert_to_heap(int *heap, int n_elements, int val) {
 
 int extract_from_heap(int *heap, int n_elements) {
     int top = heap[0];
-    heap[0] = heap[n_elements];
+    heap[0] = heap[n_elements-1];
     bubble_down(heap, 0);
     return top;
 }
