@@ -54,10 +54,7 @@ void benchmark(void (sort)(int *, int), char *name, bool check_sorted) {
     cout << "Sort Method: " << name << endl;
     for (int j = 0; j < sizeof(sizes)/sizeof(int); j++) {
 	long int total_time = 0;
-	int *arr = new int[sizes[j] + 8];
-	for (int i = sizes[j]; i < sizes[j] + 8; ++i) {
-		arr[i] = INT_MAX;
-	}
+	int *arr = new int[sizes[j]];
 	for (int i = 0; i < n_rep; i++) {
 	    generate_random_array(arr, sizes[j]);
 	    long int t1 = get_time();
