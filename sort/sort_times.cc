@@ -79,8 +79,7 @@ int main(void) {
     //benchmark(merge_sort, (char *)"merge_sort", true);
     //benchmark(merge_sort_optimized2, (char *)"merge_sort_optimized2", true);
     //benchmark(merge_sort_optimized, (char *)"merge_sort_optimized", true);
-   // benchmark(merge_sort_optimized3, (char *)"merge_sort_optimized3", true);
-    //benchmark(merge_sort_optimized_pre_padded, (char *)"merge_sort_optimized_pre_padded", true);
+    benchmark(merge_sort_optimized3, (char *)"merge_sort_optimized3", true);
     benchmark(quick_sort, (char*) "quick_sort", true);
     benchmark(heap_sort, (char*) "heap_sort", true);
     benchmark(std_stable_sort, (char *)"std_stable_sort", true);
