@@ -8,6 +8,7 @@
 #include "merge_sort.cc"
 #include "merge_sort_optimized.cc"
 #include "quick_sort.cc"
+#include "heap_sort.cc"
 
 using namespace std;
 
@@ -81,6 +82,7 @@ int main(void) {
    // benchmark(merge_sort_optimized3, (char *)"merge_sort_optimized3", true);
     //benchmark(merge_sort_optimized_pre_padded, (char *)"merge_sort_optimized_pre_padded", true);
     benchmark(quick_sort, (char*) "quick_sort", true);
+    benchmark(heap_sort, (char*) "heap_sort", true);
     benchmark(std_stable_sort, (char *)"std_stable_sort", true);
     benchmark(std_sort, (char*)"std_sort", true);
     benchmark(std_qsort, (char*)"std_qsort", true);
