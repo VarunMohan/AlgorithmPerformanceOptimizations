@@ -1,5 +1,5 @@
 #include <iostream>
-#include "sort_utils.cc" 
+#include "sort_utils.cc"
 
 void quick_sort(int *A, int n);
 void quick_sort_helper(int *start, int *end);
@@ -16,7 +16,7 @@ void quick_sort_optimized(int *A, int n) {
 	int* B = new int[n+8];
 	for (int i = 0; i < n; i++) {
 		B[i] = A[i];
-	} 
+	}
 	for (int i = n; i < n + 9; i++) {
 		B[i] = INT_MAX;
 	}
@@ -32,9 +32,9 @@ void quick_sort_optimized_helper(int *start, int *end) {
 		return;
 	}
 	if (n < 8) {
-		sort8_network(start);
-		return;
-	} 
+	    small_sort(start, n);
+	    return;
+	}
 	int p = partition(start, end);
 	quick_sort_helper(start, start + p - 1);
 	quick_sort_helper(start + p, end);
@@ -67,4 +67,3 @@ void val_swap(int *x, int *y) {
 	*x = *y;
 	*y = tmp;
 }
-
