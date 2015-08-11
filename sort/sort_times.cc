@@ -79,8 +79,8 @@ void benchmark(void (sort)(int *, int), char *name, bool check_sorted) {
 int main(void) {
     srand(time(NULL));
     //benchmark(merge_sort, (char *)"merge_sort", true);
-    //benchmark(merge_sort_optimized2, (char *)"merge_sort_optimized2", true);
-    //benchmark(merge_sort_optimized3, (char *)"merge_sort_optimized3", true);
+    benchmark(merge_sort_optimized2, (char *)"merge_sort_optimized2", true);
+    benchmark(merge_sort_optimized3, (char *)"merge_sort_optimized3", true);
     benchmark(merge_sort_optimized4, (char *)"merge_sort_optimized4", true);
     //benchmark(quick_sort, (char*) "quick_sort", true);
     //benchmark(quickSortVV, (char*) "quickSortVV", true);

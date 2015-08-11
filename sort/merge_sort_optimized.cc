@@ -47,12 +47,12 @@ inline void merge_sort_helper_optimized3(int *__restrict__ aux, int *__restrict_
     }
 
     int *mid = start + n/2;
-    merge_sort_helper_optimized3(sorted + n/2, aux, start, mid);
-    merge_sort_helper_optimized3(sorted, aux + n/2, mid, end);
+    merge_sort_helper_optimized3(sorted, aux, start, mid);
+    merge_sort_helper_optimized3(sorted + n/2, aux + n/2, mid, end);
     merge(sorted, aux, aux + n/2, mid - start, end - mid);
 }
 
-inline void merge_sort_helper_optimized4(int *aux, int *B, int *A, int n) {
+inline void merge_sort_helper_optimized4(int * __restrict__ aux, int * __restrict__ B, int * __restrict__ A, int n) {
     if (n == 1) {
         B[0] = A[0];
         return;
