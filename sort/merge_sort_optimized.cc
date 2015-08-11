@@ -1,4 +1,5 @@
 #include "sort_utils.cc"
+#include <cstring>
 
 void sort_le_8(int *out, int *in, int n) {
     int aux[8];
@@ -68,7 +69,7 @@ inline void merge_sort_helper_optimized4(int *aux, int *sorted, int *start, int 
 
 inline void merge_sort_optimized2(int *A, int n) {
         int *B = new int[n];
-        int *aux = new int[2*n+1];
+        int *aux = new int[2*n+12];
         merge_sort_helper_optimized2(aux, B, A, n);
         for (int i = 0; i < n; ++i) {
                 A[i] = B[i];
