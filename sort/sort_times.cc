@@ -76,12 +76,12 @@ int main(void) {
     srand(time(NULL));
     benchmark(merge_sort, (char *)"merge_sort", true);
     benchmark(merge_sort_optimized2, (char *)"merge_sort_optimized2", true);
-    benchmark(merge_sort_optimized, (char *)"merge_sort_optimized", true);
     benchmark(merge_sort_optimized3, (char *)"merge_sort_optimized3", true);
+    benchmark(merge_sort_optimized4, (char *)"merge_sort_optimized4", true);
     //benchmark(quick_sort, (char*) "quick_sort", true);
     //benchmark(quickSortVV, (char*) "quickSortVV", true);
     //benchmark(heap_sort, (char*) "heap_sort", true);
-    //benchmark(std_stable_sort, (char *)"std_stable_sort", true);
+    benchmark(std_stable_sort, (char *)"std_stable_sort", true);
     benchmark(std_sort, (char*)"std_sort", true);
     benchmark(sedgesort, (char*)"sedgesort", true);
     //benchmark(std_qsort, (char*)"std_qsort", true);
