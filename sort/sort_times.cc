@@ -78,7 +78,7 @@ void benchmark(void (sort)(int *, int), char *name, bool check_sorted) {
 }
 
 int main(void) {
-    omp_set_num_threads(2);
+    omp_set_num_threads(4);
     srand(time(NULL));
     //benchmark(merge_sort, (char *)"merge_sort", true);
     benchmark(merge_sort_optimized2, (char *)"merge_sort_optimized2", true);

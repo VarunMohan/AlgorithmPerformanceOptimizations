@@ -87,7 +87,7 @@ inline void merge_parallel_L5( _Type* t, int p1, int r1, int p2, int r2, _Type* 
         exchange( length1, length2 );
     }
     if ( length1 == 0 ) return;
-    if (( length1 + length2 ) <= 16392)
+    if (( length1 + length2 ) <= 100000)
         merge_ptr( &t[ p1 ], &t[ p1 + length1 ], &t[ p2 ], &t[ p2 + length2 ], &a[ p3 ] );
     else {
         int q1 = ( p1 + r1 ) / 2;

@@ -44,8 +44,8 @@ inline void merge_sort_helper_parallel(int *aux, int *B, int *A, int n) {
         B[0] = A[0];
         return;
     }
-    merge_sort_helper_optimized2(aux + n, aux, A, n/2);
-    merge_sort_helper_optimized2(aux + n, aux + n/2, A + n/2, n - n/2);
+    merge_sort_helper_parallel(aux + n, aux, A, n/2);
+    merge_sort_helper_parallel(aux + n, aux + n/2, A + n/2, n - n/2);
     merge_parallel_L5(aux, 0, n/2-1, n/2, n-1, B, 0);
 }
 
