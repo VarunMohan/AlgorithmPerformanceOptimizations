@@ -6,6 +6,7 @@
 #include <map>
 #include "limits.h"
 
+#include <omp.h>
 #include "merge_sort.cc"
 #include "merge_sort_optimized.cc"
 #include "quick_sort.cc"
@@ -14,8 +15,8 @@
 
 using namespace std;
 
-int sizes[] = {100, 1000, 10000, 100000, 1000000};
-int n_rep = 20;
+int sizes[] = {100000, 1000000, 10000000};
+int n_rep = 5;
 
 void std_sort(int *arr, int n) {
     sort(arr, arr + n);
@@ -77,16 +78,18 @@ void benchmark(void (sort)(int *, int), char *name, bool check_sorted) {
 }
 
 int main(void) {
+    omp_set_num_threads(2);
     srand(time(NULL));
     //benchmark(merge_sort, (char *)"merge_sort", true);
     benchmark(merge_sort_optimized2, (char *)"merge_sort_optimized2", true);
-    benchmark(merge_sort_optimized3, (char *)"merge_sort_optimized3", true);
-    benchmark(merge_sort_optimized4, (char *)"merge_sort_optimized4", true);
+    //benchmark(merge_sort_optimized3, (char *)"merge_sort_optimized3", true);
+    //benchmark(merge_sort_optimized4, (char *)"merge_sort_optimized4", true);
+    benchmark(merge_sort_parallel, (char *)"merge_sort_parallel", true);
     //benchmark(quick_sort, (char*) "quick_sort", true);
     //benchmark(quickSortVV, (char*) "quickSortVV", true);
     //benchmark(heap_sort, (char*) "heap_sort", true);
     //benchmark(std_stable_sort, (char *)"std_stable_sort", true);
-    benchmark(std_sort, (char*)"std_sort", true);
+    //benchmark(std_sort, (char*)"std_sort", true);
     //benchmark(sedgesort, (char*)"sedgesort", true);
     //benchmark(std_qsort, (char*)"std_qsort", true);
 }

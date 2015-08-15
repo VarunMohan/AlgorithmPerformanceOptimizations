@@ -39,6 +39,16 @@ inline void merge_sort_helper_optimized2(int *aux, int *B, int *A, int n) {
     merge(B, aux, aux + n/2, n/2, n-n/2);
 }
 
+inline void merge_sort_helper_parallel(int *aux, int *B, int *A, int n) {
+    if (n == 1) {
+        B[0] = A[0];
+        return;
+    }
+    merge_sort_helper_optimized2(aux + n, aux, A, n/2);
+    merge_sort_helper_optimized2(aux + n, aux + n/2, A + n/2, n - n/2);
+    merge_parallel_L5(aux, 0, n/2-1, n/2, n-1, B, 0);
+}
+
 inline void merge_sort_helper_optimized3(int *__restrict__ aux, int *__restrict__ sorted, int * __restrict__ start, int * __restrict__ end) {
     int n = (end-start);
     if (n == 1) {
@@ -99,4 +109,16 @@ inline void merge_sort_optimized4(int *A, int n) {
 
         delete [] B;
         delete [] aux;
+}
+
+inline void merge_sort_parallel(int *A, int n) {
+    int *B = new int[n];
+    int *aux = new int[2*n+12];
+    merge_sort_helper_parallel(aux, B, A, n);
+    for (int i = 0; i < n; ++i) {
+	A[i] = B[i];
+    }
+
+    delete [] B;
+    delete [] aux;
 }
